@@ -101,7 +101,7 @@ p {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: transparent;
+  background-color: var(--color-grey);
   align-items: center;
   color: var(--color-white);
   padding: 16px;
@@ -152,7 +152,7 @@ p {
 
 /* Home */
 #home {
-  background: url("imgs/home-background.png") center/cover no-repeat;
+  background-color: var(--color-grey);
   padding: 40px;
   padding-top: 120px;
   text-align: center;
