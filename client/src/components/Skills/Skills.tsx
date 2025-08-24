@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Skills.module.scss";
 
+import cn from 'classnames';
+
 const skills = [
     { name: "React", value: 90 },
     { name: "HTML", value: 90 },
@@ -14,7 +16,7 @@ const etc = ["Git", "Scrum master", "Math"];
 
 const Skills: React.FC = () => {
     return (
-        <section id="skills" className="section">
+        <section id="skills" className={cn("section", styles.skills)}>
             <div className="section__container">
                 <h1>Skills</h1>
                 <h2>Skills & Attributes</h2>
