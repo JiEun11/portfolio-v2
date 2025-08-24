@@ -58,8 +58,31 @@
     font-size: 24px;
     color: var(--color-white);
     display: none;
+}
 
-    @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: var(--color-pink);
+
+        &--dark {
+            padding: 16px;
+        }
+    }
+
+    .navbar__menu {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        display: none;
+
+        &.open {
+            display: block;
+        }
+    }
+
+    .navbar__toggle_btn {
         display: block;
         top: 16px;
         right: 16px;
