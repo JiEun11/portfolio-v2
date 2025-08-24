@@ -1,5 +1,5 @@
-// src/sections/About.tsx
 import React from "react";
+import styles from "./About.module.scss";
 
 const majors = [
     {
@@ -57,30 +57,30 @@ const About: React.FC = () => {
         <section id="about" className="section section__container">
             <h1>About me</h1>
             <p>Introduce myself</p>
-            <div className="about__majors">
+            <div className={styles.about__majors}>
                 {majors.map((major) => (
-                    <div className="major" key={major.title}>
-                        <div className="major__icon">
+                    <div className={styles.major} key={major.title}>
+                        <div className={styles.major__icon}>
                             <i className={major.icon}></i>
                         </div>
-                        <h2 className="major__title">{major.title}</h2>
-                        <div className="major__description">
+                        <h2 className={styles.major__title}>{major.title}</h2>
+                        <div className={styles.major__description}>
                             {major.description}
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="about__jobs">
+            <div className={styles.about__jobs}>
                 {jobs.map((job) => (
-                    <div className="job" key={job.name}>
+                    <div className={styles.job} key={job.name}>
                         <img
                             src={job.img}
                             alt={job.alt}
-                            className="job__logo"
+                            className={styles.job__logo}
                         />
-                        <div className="job__description">
-                            <p className="job__name">{job.name}</p>
-                            <p className="job__period">{job.period}</p>
+                        <div className={styles.job__description}>
+                            <p className={styles.job__name}>{job.name}</p>
+                            <p className={styles.job__period}>{job.period}</p>
                         </div>
                     </div>
                 ))}
