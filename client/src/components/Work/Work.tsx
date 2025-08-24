@@ -1,5 +1,5 @@
-// src/sections/Work.tsx
 import React, { useState } from "react";
+import styles from "./Work.module.scss";
 
 type Category = "all" | "front-end" | "back-end" | "data-analysis";
 
@@ -13,7 +13,7 @@ const categories = [
 const projects = [
     {
         href: "https://github.com/JiEun11/portfolio",
-        img: "imgs/projects/project1.png",
+        img: "/assets/projects/project1.png",
         alt: "Youtube",
         title: "Portfolio Site",
         desc: "Portfolio Site by JavaScript",
@@ -21,7 +21,7 @@ const projects = [
     },
     {
         href: "https://github.com/JiEun11/portfolio",
-        img: "imgs/projects/project2.png",
+        img: "/assets/projects/project2.png",
         alt: "mobile",
         title: "Application",
         desc: "Frontend development through collaboration with the Product experience Design team",
@@ -29,7 +29,7 @@ const projects = [
     },
     {
         href: "https://github.com/JiEun11/portfolio",
-        img: "imgs/projects/project3.png",
+        img: "/assets/projects/project3.png",
         alt: "mobile",
         title: "Application",
         desc: "API Design and Implementation by Node Express & Spring Boot",
@@ -37,7 +37,7 @@ const projects = [
     },
     {
         href: "https://github.com/JiEun11/portfolio",
-        img: "imgs/projects/project4.png",
+        img: "/assets/projects/project4.png",
         alt: "mobile",
         title: "Batch system",
         desc: "Creating raw material data crawlers using external APIs, Java, Python, SQLalchemy, Pandas",
@@ -45,7 +45,7 @@ const projects = [
     },
     {
         href: "https://github.com/JiEun11/portfolio",
-        img: "imgs/projects/project5.png",
+        img: "/assets/projects/project5.png",
         alt: "mobile",
         title: "Mobile",
         desc: "Responsive website by React",
@@ -73,39 +73,39 @@ const Work: React.FC = () => {
             <div className="section__container">
                 <h1>My work</h1>
                 <h3>Projects</h3>
-                <div className="work__categories">
+                <div className={styles.work__categories}>
                     {categories.map((cat) => (
                         <button
                             key={cat.key}
-                            className={`category__btn${
-                                selected === cat.key ? " selected" : ""
+                            className={`${styles.category__btn} ${
+                                selected === cat.key ? styles.selected : ""
                             }`}
                             data-filter={cat.key === "all" ? "*" : cat.key}
                             onClick={() => setSelected(cat.key as Category)}
                         >
                             {cat.label}
-                            <span className="category__count">
+                            <span className={styles.category__count}>
                                 {categoryCount(cat.key as Category)}
                             </span>
                         </button>
                     ))}
                 </div>
-                <div className="work__projects">
+                <div className={styles.work__projects}>
                     {filteredProjects.map((p, idx) => (
                         <a
                             key={idx}
                             href={p.href}
-                            className="project"
+                            className={styles.project}
                             target="_blank"
                             rel="noopener noreferrer"
                             data-type={p.type}
                         >
                             <img
-                                className="project__img"
+                                className={styles.project__img}
                                 src={p.img}
                                 alt={p.alt}
                             />
-                            <div className="project__description">
+                            <div className={styles.project__description}>
                                 <h3>{p.title}</h3>
                                 <span>{p.desc}</span>
                             </div>
