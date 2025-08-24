@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import styles from './Navbar.module.scss';
 
 const NAV_ITEMS = [
-    { name: "Home", link: "#home" },
-    { name: "About", link: "#about" },
-    { name: "Skills", link: "#skills" },
-    { name: "My work", link: "#work" },
-    // { name: 'Testimonials', link: '#testimonials' }, // 필요시 주석 해제
-    { name: "Contact", link: "#contact" },
+    { name: 'Home', link: '#home' },
+    { name: 'About', link: '#about' },
+    { name: 'Skills', link: '#skills' },
+    { name: 'My work', link: '#work' },
+    // { name: 'Testimonials', link: '#testimonials' }, // 필요시 활성화
+    { name: 'Contact', link: '#contact' },
 ];
 
 const Navbar: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [active, setActive] = useState("");
+    const [active, setActive] = useState('');
 
     const handleMenuClick = (link: string) => {
         setActive(link);
@@ -19,23 +20,21 @@ const Navbar: React.FC = () => {
         const target = document.querySelector(link);
 
         if (target) {
-            (target as HTMLElement).scrollIntoView({ behavior: "smooth" });
+            (target as HTMLElement).scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     return (
-        <nav id="navbar" className="navbar">
-            <div className="navbar__logo">
+        <nav className={styles.navbar}>
+            <div className={styles.navbar__logo}>
                 <i className="fab fa-diaspora"></i>
                 <a href="#home">Bella</a>
             </div>
-            <ul className={`navbar__menu${menuOpen ? " open" : ""}`}>
+            <ul className={`${styles.navbar__menu} ${menuOpen ? styles.open : ''}`}>
                 {NAV_ITEMS.map((item) => (
                     <li
                         key={item.link}
-                        className={`navbar__menu__item${
-                            active === item.link ? " active" : ""
-                        }`}
+                        className={`${styles.navbar__menu__item} ${active === item.link ? styles.active : ''}`}
                         data-link={item.link}
                         onClick={() => handleMenuClick(item.link)}
                     >
@@ -44,7 +43,7 @@ const Navbar: React.FC = () => {
                 ))}
             </ul>
             <button
-                className="navbar__toggle-btn"
+                className={styles.navbar__toggle_btn}
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-label="메뉴 열기/닫기"
             >

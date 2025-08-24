@@ -1,4 +1,4 @@
-import React from "react";
+// React 17 이상에서는 import 생략 가능 (설정에 따라 다름)
 import {
     Navbar,
     Home,
