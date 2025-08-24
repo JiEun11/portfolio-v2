@@ -1,5 +1,5 @@
-// src/sections/Skills.tsx
 import React from "react";
+import styles from "./Skills.module.scss";
 
 const skills = [
     { name: "React", value: 90 },
@@ -19,28 +19,28 @@ const Skills: React.FC = () => {
                 <h1>Skills</h1>
                 <h2>Skills & Attributes</h2>
                 <p>Passion for learning new technologies.</p>
-                <div className="skillset">
-                    <div className="skillset__left">
-                        <h3 className="skillset__title">Skills</h3>
+                <div className={styles.skillset}>
+                    <div className={styles.skillset__left}>
+                        <h3 className={styles.skillset__title}>Skills</h3>
                         {skills.map((skill) => (
-                            <div className="skill" key={skill.name}>
-                                <div className="skill__description">
+                            <div className={styles.skill} key={skill.name}>
+                                <div className={styles.skill__description}>
                                     <span>{skill.name}</span>
                                     <span>{skill.value}%</span>
                                 </div>
-                                <div className="skill__bar">
+                                <div className={styles.skill__bar}>
                                     <div
-                                        className="skill__value"
+                                        className={styles.skill__value}
                                         style={{ width: `${skill.value}%` }}
                                     ></div>
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <div className="skillset__right">
-                        <div className="tools">
-                            <h3 className="skillset__title">Tools</h3>
-                            <ul className="tools__list">
+                    <div className={styles.skillset__right}>
+                        <div className={styles.tools}>
+                            <h3 className={styles.skillset__title}>Tools</h3>
+                            <ul className={styles.tools__list}>
                                 {tools.map((tool) => (
                                     <li key={tool}>
                                         <span>{tool}</span>
@@ -48,9 +48,9 @@ const Skills: React.FC = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className="etc">
-                            <h3 className="skillset__title">Etc</h3>
-                            <ul className="etc__list">
+                        <div className={styles.etc}>
+                            <h3 className={styles.skillset__title}>Etc</h3>
+                            <ul className={styles.etc__list}>
                                 {etc.map((item) => (
                                     <li key={item}>
                                         <span>{item}</span>
