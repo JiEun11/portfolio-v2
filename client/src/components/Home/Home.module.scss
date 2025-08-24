@@ -1,0 +1,35 @@
+.home__container {
+    text-align: center;
+    padding: 40px;
+    padding-top: 120px;
+    background-color: var(--color-grey);
+}
+
+.home__avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2px solid var(--color-light-white);
+}
+
+.home__title,
+.home__description {
+    color: var(--color-white);
+}
+
+.home__contact {
+    color: var(--color-white);
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    margin: 24px;
+    padding: 8px 12px;
+    border: 2px solid var(--color-white);
+    border-radius: var(--size-border-radius);
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--color-orange);
+    }
+}
