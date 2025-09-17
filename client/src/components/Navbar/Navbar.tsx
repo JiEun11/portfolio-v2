@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.scss';
 
+import type { Locale } from '../../types/locale';
+interface NavbarProps {
+    onLanguageChange?: (locale: Locale) => void;
+}
+
 const NAV_ITEMS = [
     { name: 'Home', link: '#home' },
     { name: 'About', link: '#about' },
@@ -10,9 +15,17 @@ const NAV_ITEMS = [
     { name: 'Contact', link: '#contact' },
 ];
 
-const Navbar: React.FC = () => {
+const LANGUAGES: { code: Locale; label: string }[] = [
+    { code: 'ko', label: '한국어' },
+    { code: 'en', label: 'English' },
+    { code: 'de', label: 'Deutsch' },
+];
+
+const Navbar: React.FC<NavbarProps> = ({ onLanguageChange }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState('');
+
+    const [selectedLang, setSelectedLang] = useState<Locale>('ko');
 
     const handleMenuClick = (link: string) => {
         setActive(link);
@@ -24,11 +37,29 @@ const Navbar: React.FC = () => {
         }
     };
 
+    const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const newLang = e.target.value as Locale;
+        setSelectedLang(newLang);
+        if (onLanguageChange) onLanguageChange(newLang);
+    };
+
+
     return (
         <nav className={styles.navbar}>
             <div className={styles.navbar__logo}>
                 <i className="fab fa-diaspora"></i>
-                <a href="#home">Bella</a>
+                <select
+                    value={selectedLang}
+                    onChange={handleLanguageChange}
+                    className={styles.navbar__lang_select}
+                    aria-label="언어 선택"
+                >
+                    {LANGUAGES.map(({ code, label }) => (
+                        <option key={code} value={code}>
+                            {label}
+                        </option>
+                    ))}
+                </select>
             </div>
             <ul className={`${styles.navbar__menu} ${menuOpen ? styles.open : ''}`}>
                 {NAV_ITEMS.map((item) => (
