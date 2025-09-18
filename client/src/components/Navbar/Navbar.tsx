@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 
 import type { Locale } from '../../types/locale';
@@ -7,12 +8,12 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS = [
-    { name: 'Home', link: '#home' },
-    { name: 'About', link: '#about' },
-    { name: 'Skills', link: '#skills' },
-    { name: 'My work', link: '#work' },
-    // { name: 'Testimonials', link: '#testimonials' }, // 필요시 활성화
-    { name: 'Contact', link: '#contact' },
+    { name: 'Home', link: '/home' },
+    { name: 'About', link: '/about' },
+    { name: 'Skills', link: '/skills' },
+    { name: 'My work', link: '/work' },
+    // { name: 'Testimonials', link: '/testimonials' }, // 필요시 활성화
+    { name: 'Contact', link: '/contact' },
 ];
 
 const LANGUAGES: { code: Locale; label: string }[] = [
@@ -24,17 +25,13 @@ const LANGUAGES: { code: Locale; label: string }[] = [
 const Navbar: React.FC<NavbarProps> = ({ onLanguageChange }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState('');
-
     const [selectedLang, setSelectedLang] = useState<Locale>('ko');
+    const navigate = useNavigate();
 
     const handleMenuClick = (link: string) => {
         setActive(link);
         setMenuOpen(false);
-        const target = document.querySelector(link);
-
-        if (target) {
-            (target as HTMLElement).scrollIntoView({ behavior: 'smooth' });
-        }
+        navigate(link);
     };
 
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
