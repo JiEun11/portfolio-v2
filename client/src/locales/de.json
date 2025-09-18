@@ -2,7 +2,10 @@
     "app.title": "Portfolio",
     "nav.home": "Startseite",
     "nav.about": "Über mich",
-    "nav.skills": "Fähigkeiten", 
+    "nav.skills": "Fähigkeiten",
     "nav.work": "Arbeiten",
-    "nav.contact": "Kontakt"
+    "nav.contact": "Kontakt",
+    
+    "home.title": "Hallo,{br}Ich bin Dream Coder",
+    "home.description": "Voller Inspiration"
 }

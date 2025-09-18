@@ -1,7 +1,12 @@
 import React from "react";
+
+import { useIntl } from 'react-intl';
+
 import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
+    const intl = useIntl();
+
     const handleContactClick = () => {
         const contactSection = document.querySelector("#contact");
         if (contactSection) {
@@ -20,10 +25,13 @@ const Home: React.FC = () => {
                     className={styles.home__avatar}
                 />
                 <h1 className={styles.home__title}>
-                    Hello, <br />
-                    I'm Dream Coder
+                    {intl.formatMessage({ id: "home.title" }, {
+                        br: <br />
+                    })}
                 </h1>
-                <h2 className={styles.home__description}>Full of inspiration</h2>
+                <h2 className={styles.home__description}>
+                    {intl.formatMessage({ id: "home.description" })}
+                </h2>
                 <button
                     className={styles.home__contact}
                     type="button"

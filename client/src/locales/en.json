@@ -4,5 +4,8 @@
     "nav.about": "About",
     "nav.skills": "Skills",
     "nav.work": "Work",
-    "nav.contact": "Contact"
+    "nav.contact": "Contact",
+
+    "home.title": "Hello,{br}I'm Dream Coder",
+    "home.description": "Full of inspiration"
 }

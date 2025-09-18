@@ -4,5 +4,8 @@
     "nav.about": "소개",
     "nav.skills": "기술",
     "nav.work": "작업물",
-    "nav.contact": "연락처"
+    "nav.contact": "연락처",
+
+    "home.title": "안녕하세요,{br}입니다",
+    "home.description": "가득한"
 }
