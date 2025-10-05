@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.scss';
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select'
 
 import type { Locale } from '../../types/locale';
 interface NavbarProps {
@@ -26,38 +27,45 @@ const Navbar: React.FC<NavbarProps> = ({ onLanguageChange }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState('');
 
-    const [selectedLang, setSelectedLang] = useState<Locale>('ko');
+    const [selectedLang, setSelectedLang] = useState(LANGUAGES[0]);
     const navigate = useNavigate(); // 추가
-    
+
     const handleMenuClick = (link: string) => {
         setActive(link);
         setMenuOpen(false);
         navigate(link);
     };
 
-    const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const newLang = e.target.value as Locale;
-        setSelectedLang(newLang);
-        if (onLanguageChange) onLanguageChange(newLang);
-    };
-
 
     return (
         <nav className={styles.navbar}>
-            <div className={styles.navbar__logo}>
+            <div className={styles.navbar__left}>
                 <i className="fab fa-diaspora"></i>
-                <select
+                <Select
+                    options={LANGUAGES}
+                    defaultValue={LANGUAGES[0]}
                     value={selectedLang}
-                    onChange={handleLanguageChange}
-                    className={styles.navbar__lang_select}
-                    aria-label="언어 선택"
-                >
-                    {LANGUAGES.map(({ code, label }) => (
-                        <option key={code} value={code}>
-                            {label}
-                        </option>
-                    ))}
-                </select>
+                    theme={( theme ) =>({
+                        ...theme,
+                        borderRadius: 10,
+                        colors: {
+                            ...theme.colors,
+                            primary: '#666666',
+                        },
+                    }) }
+                    styles={{
+                        control: (baseStyles, state) => ({
+                            ...baseStyles,
+                            borderColor: state.isFocused ? 'grey' : 'none',
+                            width: '100px'
+                        }),
+                    }}
+                    onChange={(option) => {
+                        const langObj = option as { code: Locale; label: string };
+                        setSelectedLang(langObj);
+                        if (onLanguageChange) onLanguageChange(langObj.code);
+                    }}
+                />
             </div>
             <ul className={`${styles.navbar__menu} ${menuOpen ? styles.open : ''}`}>
                 {NAV_ITEMS.map((item) => (
